@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f310b95a157724a3a95bc3a26dd01934, type: 3}
+  m_Name: BasicSetting
+  m_EditorClassIdentifier: Assembly-CSharp::Halloween.Settings.GameSettings
+  inputButtonAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Input Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 830f48df-1cdb-487f-b1f8-8667f0c2edcd
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4395025939744271580, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  inputPointerAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Input Pointer
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 504ae9b9-b814-4167-93ac-3c94ec971094
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4610259254447116665, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  inputPointerActionPosition:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Input Pointer Action Position
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 5d453cb9-6cd7-4f09-81eb-627ea30e9e7b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8796597484995978561, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  mainKey: 32
+  preDelay: 3
+  bpm: 60
+  beats: 4
+  allowableBeatStartIndex: 2
+  allowableBeatEndIndex: 3
+  life: 3
+  restoreLifeCombo: 5
+  gameDifficulties:
+  - {fileID: 11400000, guid: 0e7dff6acb2b4464dadd74f6739dcd1c, type: 2}
+  - {fileID: 11400000, guid: aef05d69e94284c678e5af3b8199a900, type: 2}
+  - {fileID: 11400000, guid: 0a3ea609ea29943a38acc4b7086a3e62, type: 2}
+  - {fileID: 11400000, guid: f130aec2cb534406dbb5e07a83fa69ac, type: 2}
+  - {fileID: 11400000, guid: e6db9c13d7860425ca3f3627397ece01, type: 2}
+  - {fileID: 11400000, guid: 05d6cb5824f92470783c798aac130dd3, type: 2}
+  endlessDifficulties: {fileID: 11400000, guid: 7b4a2e042ccd047b5a4cefb69f69b137, type: 2}

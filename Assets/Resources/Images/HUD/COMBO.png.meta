@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: e70fdedfed35a4898bd0f1ffd769d0e7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1266881246577901816
+    second: COMBO_0
+  - first:
+      213: 6320626597368122450
+    second: COMBO_1
+  - first:
+      213: 5649021706563285759
+    second: COMBO_2
+  - first:
+      213: -3244661589483324372
+    second: COMBO_3
+  - first:
+      213: 8509377456373313651
+    second: COMBO_4
+  - first:
+      213: 7272247493504630491
+    second: COMBO_5
+  - first:
+      213: -3118803230696540623
+    second: COMBO_6
+  - first:
+      213: -6784044006689132502
+    second: COMBO_7
+  - first:
+      213: 6736386611268450487
+    second: COMBO_8
+  - first:
+      213: -8115313707482529384
+    second: COMBO_9
+  - first:
+      213: -2077410950385132289
+    second: COMBO_10
+  - first:
+      213: -2273791413585479531
+    second: COMBO_11
+  - first:
+      213: -6836661600097119567
+    second: COMBO_12
+  - first:
+      213: 3471892671160011306
+    second: COMBO_13
+  - first:
+      213: -8494292584987069444
+    second: COMBO_14
+  - first:
+      213: -38172010418651523
+    second: COMBO_15
+  - first:
+      213: -1571004723249597449
+    second: COMBO_16
+  - first:
+      213: -635503618545813476
+    second: COMBO_17
+  - first:
+      213: -6531826444318714345
+    second: COMBO_18
+  - first:
+      213: -1329096361444910640
+    second: COMBO_19
+  - first:
+      213: 4257199481161021581
+    second: COMBO_20
+  - first:
+      213: 4019928159690253120
+    second: COMBO_21
+  - first:
+      213: 309560584453379027
+    second: COMBO_22
+  - first:
+      213: -6401794303004091652
+    second: COMBO_23
+  - first:
+      213: -7831788077769403284
+    second: COMBO_24
+  - first:
+      213: 6731901962350796544
+    second: COMBO_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: COMBO_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 168
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f041e218cdd49110800000000000000
+      internalID: 1266881246577901816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_1
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 169
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c4306f66067b750800000000000000
+      internalID: 6320626597368122450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_2
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 155
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2fc24ff4b556e40800000000000000
+      internalID: 5649021706563285759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_3
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 164
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2cfd7ea975a8f2d0800000000000000
+      internalID: -3244661589483324372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_4
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 160
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37039d246b1671670800000000000000
+      internalID: 8509377456373313651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_5
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 164
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde7119b0963ce460800000000000000
+      internalID: 7272247493504630491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_6
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 148
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 136fdfd5cf8c7b4d0800000000000000
+      internalID: -3118803230696540623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_7
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 153
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a203da85beb3ad1a0800000000000000
+      internalID: -6784044006689132502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_8
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 143
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b87a5a9ee37c7d50800000000000000
+      internalID: 6736386611268450487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_9
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 20
+        width: 211
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89145a80e2d906f80800000000000000
+      internalID: -8115313707482529384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_10
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 20
+        width: 122
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffc99c94fbd8b23e0800000000000000
+      internalID: -2077410950385132289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_11
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 20
+        width: 210
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59877e3a1ced170e0800000000000000
+      internalID: -2273791413585479531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_12
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 131
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b258a43f7c4f11a0800000000000000
+      internalID: -6836661600097119567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2a46c25df3ae2030800000000000000
+      internalID: 3471892671160011306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 41
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf37c9d06e53e1a80800000000000000
+      internalID: -8494292584987069444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_15
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 33
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7e32ae32c2687ff0800000000000000
+      internalID: -38172010418651523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_16
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 18
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f33f3a178ba23ae0800000000000000
+      internalID: -1571004723249597449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_17
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 10
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18f91373dc3e27f0800000000000000
+      internalID: -635503618545813476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_18
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 17
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71651ebb47a4a55a0800000000000000
+      internalID: -6531826444318714345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_19
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 15
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d9dfcfa6e91e8de0800000000000000
+      internalID: -1329096361444910640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_20
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 20
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d88749c5f5c941b30800000000000000
+      internalID: 4257199481161021581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_21
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 2
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0436decdc57a9c730800000000000000
+      internalID: 4019928159690253120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_22
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 4
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d35ec026b7cb4400800000000000000
+      internalID: 309560584453379027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_23
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 7
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfa5254eff14827a0800000000000000
+      internalID: -6401794303004091652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_24
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 0
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c645a64ec36ef4390800000000000000
+      internalID: -7831788077769403284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COMBO_25
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 4
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00f9ca8ea258c6d50800000000000000
+      internalID: 6731901962350796544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      COMBO_0: 1266881246577901816
+      COMBO_1: 6320626597368122450
+      COMBO_10: -2077410950385132289
+      COMBO_11: -2273791413585479531
+      COMBO_12: -6836661600097119567
+      COMBO_13: 3471892671160011306
+      COMBO_14: -8494292584987069444
+      COMBO_15: -38172010418651523
+      COMBO_16: -1571004723249597449
+      COMBO_17: -635503618545813476
+      COMBO_18: -6531826444318714345
+      COMBO_19: -1329096361444910640
+      COMBO_2: 5649021706563285759
+      COMBO_20: 4257199481161021581
+      COMBO_21: 4019928159690253120
+      COMBO_22: 309560584453379027
+      COMBO_23: -6401794303004091652
+      COMBO_24: -7831788077769403284
+      COMBO_25: 6731901962350796544
+      COMBO_3: -3244661589483324372
+      COMBO_4: 8509377456373313651
+      COMBO_5: 7272247493504630491
+      COMBO_6: -3118803230696540623
+      COMBO_7: -6784044006689132502
+      COMBO_8: 6736386611268450487
+      COMBO_9: -8115313707482529384
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

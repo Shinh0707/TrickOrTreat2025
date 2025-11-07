@@ -10,7 +10,7 @@ https://unityroom.com/games/snh77_trick_or_treat
 ### コードおよびテキストファイル
 リポジトリのルートディレクトリにある `LICENSE` ファイルの通り、**MITライセンス**の下で公開されています。  
 
-### 画像ファイル
+### リソースファイル
 [/Assets/Resources/](/Assets/Resources/) フォルダ（およびそのサブフォルダ）に含まれる. 
 すべてのファイルについては、MITライセンスの対象外です。  
 これらのファイルは `CC BY-NC-ND 4.0` が適用されます。  

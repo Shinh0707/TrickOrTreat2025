@@ -103,6 +103,7 @@ InitTestScene*.unity*
 /Assets/Resources/Fonts/*
 /Assets/TextMesh Pro*
 !/Assets/Resources/**/Thirdparty/**/LICENCE
+LICENCE.meta
 /Assets/Resources/**/Thirdparty/**/*.*
 #/Assets/Resources/**/**/Thirdparty/
 

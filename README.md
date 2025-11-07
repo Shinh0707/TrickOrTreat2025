@@ -1,8 +1,13 @@
 # Trick Or Treat?
-スペースを押すだけのゲーム  
-
 Unityroom  
-https://unityroom.com/games/snh77_trick_or_treat
+https://unityroom.com/games/snh77_trick_or_treat  
+  
+![タイトルロゴ](/Assets/Resources/Images/LOGO.png)  
+
+## ゲーム内容
+スペースを押すだけのゲーム  
+![ルール1](/Assets/Resources/Images/Description/Rule1.png)  
+![ルール2](/Assets/Resources/Images/Description/Rule2.png)  
 
 ## ライセンス (License)
 このリポジトリは、ファイルの種類によってライセンスが異なります。  

@@ -102,4 +102,8 @@ InitTestScene*.unity*
 /Assets/Resources/Build*
 /Assets/Resources/Fonts/*
 /Assets/TextMesh Pro*
+!/Assets/Resources/**/Thirdparty/**/LICENCE
+/Assets/Resources/**/Thirdparty/**/*.*
+#/Assets/Resources/**/**/Thirdparty/
+
 prompt.txt

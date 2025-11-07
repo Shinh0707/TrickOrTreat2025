@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor; // Editor スクリプトには必須
 
@@ -83,9 +84,9 @@ namespace HalloweenEditor.GUI
         {
             float currentTreatRate = _treatRate.floatValue;
             float currentTrickRate = _trickRate.floatValue;
-            
+
             float totalRate = currentTreatRate + currentTrickRate;
-            
+
             // もし合計が 1.0 を超えていたら, 比率を維持して正規化する
             if (totalRate > 1.0f)
             {
@@ -123,7 +124,7 @@ namespace HalloweenEditor.GUI
             {
                 _trickRate.floatValue = currentTrickRate;
             }
-            
+
             // 3. Death Rate (残り) の計算
             float deathRate = 1.0f - _treatRate.floatValue - _trickRate.floatValue;
             // 浮動小数点誤差を考慮し, 0 未満にならないようクランプする
@@ -138,14 +139,14 @@ namespace HalloweenEditor.GUI
             DrawRateBar(_treatRate.floatValue, _trickRate.floatValue, deathRate);
 
             EditorGUILayout.Space();
-            
+
             // 各レートをラベルで表示（色付き）
             string treatLabel = $"Treat Rate: {_treatRate.floatValue:P1}";
             EditorGUILayout.LabelField(treatLabel, _orangeLabelStyle);
-            
+
             string trickLabel = $"Trick Rate: {_trickRate.floatValue:P1}";
             EditorGUILayout.LabelField(trickLabel, _purpleLabelStyle);
-            
+
             string deathLabel = $"Death Rate: {deathRate:P1}";
             EditorGUILayout.LabelField(deathLabel, _blackLabelStyle);
         }
@@ -157,7 +158,7 @@ namespace HalloweenEditor.GUI
         {
             // Inspector の幅いっぱいに Rect を確保する
             Rect barRect = EditorGUILayout.GetControlRect(
-                false, 
+                false,
                 EditorGUIUtility.singleLineHeight);
 
             // Treat (Orange)
@@ -180,3 +181,4 @@ namespace HalloweenEditor.GUI
         }
     }
 }
+#endif

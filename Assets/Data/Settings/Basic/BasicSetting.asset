@@ -54,7 +54,7 @@ MonoBehaviour:
   beats: 4
   allowableBeatStartIndex: 2
   allowableBeatEndIndex: 3
-  life: 3
+  life: 2
   restoreLifeCombo: 5
   gameDifficulties:
   - {fileID: 11400000, guid: 0e7dff6acb2b4464dadd74f6739dcd1c, type: 2}
@@ -63,4 +63,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f130aec2cb534406dbb5e07a83fa69ac, type: 2}
   - {fileID: 11400000, guid: e6db9c13d7860425ca3f3627397ece01, type: 2}
   - {fileID: 11400000, guid: 05d6cb5824f92470783c798aac130dd3, type: 2}
-  endlessDifficulties: {fileID: 11400000, guid: 7b4a2e042ccd047b5a4cefb69f69b137, type: 2}
+  - {fileID: 11400000, guid: 7b4a2e042ccd047b5a4cefb69f69b137, type: 2}
+  - {fileID: 11400000, guid: c5a22b9a093864d5ebb1bd63be045fe9, type: 2}
+  - {fileID: 11400000, guid: 449f81d8478424cd4b8b45932fffdbe2, type: 2}
+  - {fileID: 11400000, guid: 0401e9bf2f9e34023931887964252df9, type: 2}
+  - {fileID: 11400000, guid: cb81592059a8e438cb88d95f7473e85a, type: 2}
+  - {fileID: 11400000, guid: eb1b2950dc65e47268b74f10e8300485, type: 2}
+  - {fileID: 11400000, guid: 81c1ced2aa27649c497a0fe11aa50dae, type: 2}
+  - {fileID: 11400000, guid: f81a299933a1642b09889e521bf3b6d0, type: 2}
+  - {fileID: 11400000, guid: ec24a3c4180a943b19b7095bcdfd28cf, type: 2}
+  - {fileID: 11400000, guid: 9a0b575e5bb124659a0206c07a6cc655, type: 2}
+  - {fileID: 11400000, guid: 058bdc0e398e54b4cb8859c8f4c19b2e, type: 2}
+  - {fileID: 11400000, guid: 5850b8a5a2caa4f6eb54cbd7139ba95b, type: 2}
+  - {fileID: 11400000, guid: e3a05d22b5aae464c8c9216a9e524651, type: 2}
+  - {fileID: 11400000, guid: ea2539e8b1eea46139bcf982e3c2e0c2, type: 2}
+  - {fileID: 11400000, guid: ebfc84be8b57e465395a86e25fd6092b, type: 2}
+  - {fileID: 11400000, guid: 71b30f3d1aad74499b76ad89076314a9, type: 2}
+  endlessDifficulties: {fileID: 11400000, guid: d0c1927fa43db417d997941c7fe27370, type: 2}

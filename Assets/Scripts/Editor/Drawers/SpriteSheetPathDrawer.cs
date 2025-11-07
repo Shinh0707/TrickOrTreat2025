@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 using Attributes;
@@ -76,7 +77,7 @@ namespace HalloweenEditor.Drawers
 
             EditorGUI.EndProperty();
         }
-        
+
         bool TryGetSpriteSheetPath(string path, out string spriteSheetPath)
         {
             var importer = AssetImporter.GetAtPath(path);
@@ -99,3 +100,4 @@ namespace HalloweenEditor.Drawers
         }
     }
 }
+#endif

@@ -17,12 +17,13 @@ namespace Halloween.Managers
         public static GameData GameData => Instance._gameData;
         public static void AddResult(GameResult result)
         {
-            GameData.results.Add(result);
+            GameData.AddResult(result);
         }
         public static bool TryGetLastResult(out GameResult result)
         {
             return GameData.TryGetLastResult(out result);
         }
+        public static GameDataEvaluate LastEvaluate => GameData.LastEvaluate();
         private static InputAction CheckAndGetAction(InputActionProperty inputActionProperty)
         {
             if (!inputActionProperty.reference)
@@ -49,7 +50,7 @@ namespace Halloween.Managers
                 Screen.width, Screen.height
             );
         }
-        public static bool PlayedGame => GameData.results.Count > 0;
+        public static bool PlayedGame => GameData.HasResult;
         [SerializeField] private Types.GameSceneState _currentState = Types.GameSceneState.HOME;
         public static Types.GameSceneState CurrentState => Instance._currentState;
         private UnityEvent<Types.GameSceneState> _onSceneChanged = new();

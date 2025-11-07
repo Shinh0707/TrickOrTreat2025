@@ -103,6 +103,7 @@ namespace Halloween.Managers
                 if ((_setting.allowableBeatStartIndex <= _gameState.Beat) && (_gameState.Beat <= _setting.allowableBeatEndIndex) && !_trigger)
                 {
                     _trigger = GameSceneManager.InputTriggered();
+                    if (_trigger) _characterManager.PlayReady();
                 }
                 if (_gameState.BeatTriggered) PlayBeatGameAnimations(_gameState.Beat);
             }

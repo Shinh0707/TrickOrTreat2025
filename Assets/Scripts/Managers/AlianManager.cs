@@ -15,7 +15,10 @@ namespace Halloween.Managers
         [SerializeField] AnimationClip _noAlianAnimation;
         [SerializeField] Image _doorImage;
         [SerializeField] Sprite _imageOpen;
+        [SerializeField] AudioClip _openSound;
         [SerializeField] Sprite _imageClose;
+        [SerializeField] AudioClip _closeSound;
+        [SerializeField] AudioSource _sound;
         [SerializeField] Image _alianImage;
         [SerializeField,SpriteSheetPath]
         private string _kidsSpriteSheet;
@@ -37,6 +40,7 @@ namespace Halloween.Managers
         public void SetDoorState(DoorState state)
         {
             _doorImage.sprite = (state == DoorState.OPEN) ? _imageOpen : _imageClose;
+            _sound.PlayOneShot((state == DoorState.OPEN) ? _openSound : _closeSound);
         }
 
         public void SetSprite(Types.AlianType alianType)

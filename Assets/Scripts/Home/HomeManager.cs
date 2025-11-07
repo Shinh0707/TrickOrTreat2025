@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 namespace Halloween.Managers
@@ -16,6 +17,9 @@ namespace Halloween.Managers
         [SerializeField] HomeCharacterManager _homeCharacterManager;
         [SerializeField] TipsManager _tipsManager;
         [SerializeField] GameObject _tipsObject;
+        [SerializeField] AudioSource _sfx;
+        [SerializeField] AudioClip _pageSfx;
+        [SerializeField] TextMeshProUGUI _resultTextMesh;
         Settings.GameSettings _setting;
         int _currentPanel;
         bool _isAnimate;
@@ -125,11 +129,33 @@ namespace Halloween.Managers
                 if (_keepPressed) return;
                 if (_currentPanel < _panels.Length)
                 {
+                    _sfx.PlayOneShot(_pageSfx);
                     StartCoroutine(FallPanel(_panels[_currentPanel]));
                     _currentPanel++;
                     if (_currentPanel == _panels.Length)
                     {
                         _tipsObject.SetActive(true);
+                        _resultTextMesh.text = "";
+                        if (GameSceneManager.TryGetLastResult(out GameResult result))
+                        {
+
+                            if (GameSceneManager.GameData.GetBestMaxCombo() > 1)
+                            {
+                                _resultTextMesh.text = $"Best Result\nCombo: {GameSceneManager.GameData.GetBestMaxCombo()} (Last: {result.maxCombo})";
+                                if (GameSceneManager.GameData.GetBestUnMisses() > 0)
+                                {
+                                    _resultTextMesh.text += " / ";
+                                }
+                            }
+                            else if (GameSceneManager.GameData.GetBestUnMisses() > 0)
+                            {
+                                _resultTextMesh.text = $"Best Result\n";
+                            }
+                            if (GameSceneManager.GameData.GetBestUnMisses() > 0)
+                            {
+                                _resultTextMesh.text += $"Success: {GameSceneManager.GameData.GetBestUnMisses()} (Last: {result.totalUnmisses})";
+                            }
+                        }
                         _tipsManager.SetTips();
                     }
                 }

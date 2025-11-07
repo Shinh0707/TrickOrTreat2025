@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -36,10 +37,10 @@ namespace HalloweenEditor.Drawers
             // 1行をシーンフィールドとロードモードフィールドに分割する
             // 全体の幅
             float totalWidth = position.width;
-            
+
             // LoadMode の幅（Enumポップアップに適切な幅）
             float modeWidth = 100f;
-            
+
             // Scene アセットフィールドの幅
             float sceneWidth = totalWidth - modeWidth - 5f; // 5f はマージン
 
@@ -48,7 +49,7 @@ namespace HalloweenEditor.Drawers
                 position.y,
                 sceneWidth,
                 position.height);
-            
+
             var modeRect = new Rect(
                 position.x + sceneWidth + 5f,
                 position.y,
@@ -91,7 +92,7 @@ namespace HalloweenEditor.Drawers
             }
 
             // --- ロードモードフィールドの描画 ---
-            
+
             // LoadSceneMode の Enum ポップアップを描画する
             // ラベルは不要（シーンフィールドで表示済みのため）
             EditorGUI.PropertyField(modeRect, loadModeProp, GUIContent.none);
@@ -100,3 +101,4 @@ namespace HalloweenEditor.Drawers
         }
     }
 }
+#endif

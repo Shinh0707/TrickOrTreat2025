@@ -19,11 +19,13 @@ namespace Halloween.Managers
         [SerializeField] GameObject _serifContainer;
         [SerializeField] TextMeshProUGUI _serifTextMesh;
         [SerializeField] Settings.MainCharacterImageState _characterImageSetting;
+        [SerializeField] AudioSource _voice;
         private Dictionary<Types.ResultType, AnimationSerifsSetProperty> _animMap = new();
         public void SetState(Types.CharacterState state)
         {
             //Debug.Log($"Set State: {state}");
             _characterImageSetting.SetStateImage(state, _characterImage);
+            _characterImageSetting.PlayStateVoice(state, _voice);
         }
         protected override void Start()
         {
@@ -43,6 +45,11 @@ namespace Halloween.Managers
         {
             PlayClip($"3{(int)result}");
             StartCoroutine(ShowSerif(targetDuration, _animMap[result].serifs));
+        }
+        public void PlayReady()
+        {
+            Debug.Log($"Ready");
+            _characterImageSetting.PlayReadyVoice(_voice);
         }
         private IEnumerator ShowSerif(float duration, string[] serifs)
         {

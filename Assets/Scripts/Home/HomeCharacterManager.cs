@@ -55,7 +55,7 @@ namespace Halloween.Managers
             if (_specialAppeared)
             {
                 NotPlayedGameMessage(settings, out state, out text);
-                _specialAppeared = Random.Range(0f, 1f) < 0.7f;
+                _specialAppeared = Random.Range(0f, 1f) < 0.55f;
             }
             else
             {
@@ -73,7 +73,19 @@ namespace Halloween.Managers
             SetAppearence(state, text);
             _preDelayed = true;
         }
-        
+
+        void SelectMessage((Types.CharacterState State, string Text)[] messages, out Types.CharacterState state, out string text)
+        {
+            var (selectedState, selectedText) = messages[Random.Range(0, messages.Length)];
+            state = selectedState;
+            text = selectedText;
+        }
+
+        (Types.CharacterState State, string Text) SelectMessage((Types.CharacterState State, string Text)[] messages)
+        {
+            return messages[Random.Range(0, messages.Length)];
+        }
+
         /// <summary>
         /// ゲーム未プレイ時のメッセージを生成します。
         /// 主に世界観の導入、Tips、操作方法の案内を行います。
@@ -84,22 +96,16 @@ namespace Halloween.Managers
         void NotPlayedGameMessage(Settings.GameSettings settings, out Types.CharacterState state, out string text)
         {
             // Tipsや操作ヘルプをプレイヤーへ語りかける（世界観重視）
-            var messages = new (Types.CharacterState State, string Text)[]
-            {
-                (Types.CharacterState.SUCCESS, "わーい！ ハロウィン！ お菓子いっぱい作るぞー♪"),
+            SelectMessage(new[]{
+                (Types.CharacterState.SUCCESS, "ハッピーハロウィン！ お菓子いっぱい作るよ！"),
                 (Types.CharacterState.SUCCESS, "トリック・オア・トリート！ 準備はいいかな？"),
                 (Types.CharacterState.SUCCESS, $"『{settings.mainKey}』で魔法を使うよ！ タイミングが大事！"),
-                (Types.CharacterState.RELIEF, "うまくお菓子を渡せるかな…？ ドキドキするね。"),
-                (Types.CharacterState.NORMAL, $"{settings.restoreLifeCombo}回連続で喜んでもらえたら、もっと頑張れちゃうんだ♪"),
-                (Types.CharacterState.WORRY, $"もし{settings.life}回失敗したら…うぅ、考えたくないかも。")
-            };
-
-            // ランダムに選択
-            var (selectedState, selectedText) = messages[Random.Range(0, messages.Length)];
-            state = selectedState;
-            text = selectedText;
+                (Types.CharacterState.RELIEF, "うまくお菓子を渡せるかな…？ ドキドキするね…"),
+                (Types.CharacterState.NORMAL, $"{settings.restoreLifeCombo}回連続で喜んでもらえたら、もっと頑張れちゃうんだ"),
+                (Types.CharacterState.WORRY, $"もし{settings.life}回失敗したら…うぅ、考えたくないかも…")
+            }, out state, out text);
         }
-
+        
         /// <summary>
         /// 直前のゲーム結果に基づいたメッセージを生成します。
         /// 結果に対するフィードバックや独り言をキャラクター設定に沿って行います。
@@ -112,65 +118,109 @@ namespace Halloween.Managers
         void PlayedGameMessage(Settings.GameSettings settings, GameData data, GameResult lastResult, out Types.CharacterState state, out string text)
         {
             // 結果に対するフィードバック・独り言や共感を求める語りかけ
-            
+            // コンボ・成功・新記録というゲームの言葉は使わない
+            // パティ目線のセリフ
+            // ポジティブな内容で！が入ってたら基本SUCCEESS(喜び・希望)
+            // ネガティブな内容で！が入ってたら基本SHOCK(ショック・驚き)
+            // ホッとする,静かに何かを喜んだり感じたりするときはRELIEF(セリフに…や？が入ると良い感じに合う)
+            // 不安,心配な時はWORRY(セリフに…や？が入ると良い感じに合う)
+            // それ以外はNORMAL
+            // 各パターン最低３セリフ
+
             (Types.CharacterState State, string Text) message;
 
-            // 1. 魔法監視局 (Death) に対応した直後 (最優先)
-            if (lastResult.treatedDeath)
+            var lastEval = data.LastEvaluate();
+            // 成長を一緒に喜ぼうと語りかける (必ず各セリフにlastResult.maxCombo, succcessCountを自然に含め、今までで一番良かったことを示唆)
+            if (((lastEval & GameDataEvaluate.MAXCOMBO) != 0) && (lastResult.maxCombo >= settings.restoreLifeCombo))
             {
-                var messages = new (Types.CharacterState, string)[]
+                if (((lastEval & GameDataEvaluate.MAXSUCCESS) != 0) && (lastResult.successCount >= settings.restoreLifeCombo))
                 {
-                    (Types.CharacterState.RELIEF, "ふぅ、危なかったぁ…。見逃してくれたかな？"),
-                    (Types.CharacterState.WORRY, "バレたら、みんなと仲良くなれないもんね…"),
+                    // 前より成功回数が多いし、連続成功数も多い (調子が良いし,いろんな人に出会えて嬉しい)
+                    message = SelectMessage(new[]{
+                        (Types.CharacterState.SUCCESS, $"{lastResult.maxCombo}回も連続でできたし、{lastResult.successCount}人とも出会えて嬉しい！"),
+                        (Types.CharacterState.SUCCESS, $"初めて{lastResult.maxCombo}回も続けられて、{lastResult.successCount}人にも出会えた！私、今すごく調子いいみたい！"),
+                        (Types.CharacterState.SUCCESS, $"初めて{lastResult.maxCombo}回も連続で魔法を使えて{lastResult.successCount}人とも仲良くなれたかも！")
+                    });
+                }
+                else
+                {
+                    // 前より連続成功数が多い (調子が良い, たくさん作れそう)
+                    message = SelectMessage(new[]{
+                        (Types.CharacterState.SUCCESS, $"初めて{lastResult.maxCombo}回も続いた！今までで一番調子がいいかも！"),
+                        (Types.CharacterState.SUCCESS, $"初めて{lastResult.maxCombo}回も連続でできた！次も、もっと作れるかな！"),
+                        (Types.CharacterState.RELIEF, $"{lastResult.maxCombo}回も続いた…みんなともっと仲良くなれるかな")
+                    });
+                }
+            }
+            else if (((lastEval & GameDataEvaluate.MAXSUCCESS) != 0) && (lastResult.successCount >= settings.restoreLifeCombo))
+            {
+                // 前より成功回数が多い(いろんな人に出会えてうれしい)
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.SUCCESS, $"初めて{lastResult.successCount}人とも出会えた！喜んでもらえたかな！"),
+                    (Types.CharacterState.SUCCESS, $"{lastResult.successCount}人と出会えた！こんなに喜んでもらえたの初めてかも！"),
+                    (Types.CharacterState.SUCCESS, $"{lastResult.successCount}人と出会えちゃった！もっとお菓子を作ろうかな！"),
+                });
+            }
+            // 連続で成功したけど Deathで失敗してしまったか, 最後の最後で連続失敗してしまった (悔しい))
+            else if ((lastResult.maxCombo >= settings.restoreLifeCombo) && (lastResult.maxCombo >= (lastResult.successCount + lastResult.safeCount)))
+            {
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.WORRY, $"{lastResult.maxCombo}回もずっと上手くいってたから悔しいね…"),
+                    (Types.CharacterState.SHOCK, $"{lastResult.maxCombo}回もずっと連続でできて、調子よかったのに！"),
+                    (Types.CharacterState.WORRY, $"悔しいけど、少し休もうかな？")
+                });
+            }
+            // お菓子を欲しがってる人が来なかった(あれ？だれも来なかったね？みたいなことを言う)
+            else if ((lastResult.successCount == 0) && (lastResult.safeCount > 0))
+            {
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.WORRY, "あれ…？ 誰も来てくれなかった…"),
+                    (Types.CharacterState.WORRY, "みんな、もうお菓子いらないのかな？"),
+                    (Types.CharacterState.RELIEF, "次は誰かと出会えると嬉しいな…")
+                });
+            }
+            else if (lastResult.maxCombo >= settings.restoreLifeCombo)
+            {
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.SUCCESS, $"{lastResult.maxCombo}回も連続で作れちゃった！"),
+                    (Types.CharacterState.SUCCESS, $"{lastResult.maxCombo}回も続いた！コツがわかってきたかも！"),
+                    (Types.CharacterState.RELIEF, $"ふふ、{lastResult.maxCombo}回連続成功…。なんだか嬉しいね")
+                });
+            }
+            else if (lastResult.successCount >= settings.restoreLifeCombo)
+            {
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.RELIEF, $"{lastResult.successCount}人に出会えて嬉しい…次は誰に出会えるかな？"),
+                    (Types.CharacterState.SUCCESS, $"{lastResult.successCount}人に渡せたね！喜んでくれたかな？"),
+                    (Types.CharacterState.RELIEF, $"みんなと仲良くなれるかもって思えて嬉しい…")
+                });
+            }
+            // 魔法監視局に見つかって逃げた
+            else if (lastResult.treatedDeath)
+            {
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.RELIEF, "ふぅ、危なかったぁ…さっきの言葉には気をつけないとね…"),
+                    (Types.CharacterState.WORRY, "とっても怖かった…あの言葉には注意だね"),
                     (Types.CharacterState.WORRY, "今の、魔女だってバレてないよね…？")
-                };
-                message = messages[Random.Range(0, messages.Length)];
+                });
             }
-            // 2. ほぼパーフェクト (コンボが特に多く、失敗が少ない)
-            else if (lastResult.maxCombo > 15 && lastResult.failureCount <= 1)
+            // 全部失敗した ({settings.allowableBeatStartIndex+1}番目の言葉の後に{settings.mainkey}を押してみて のようなことを伝える, 悲しんだりはしない)
+            else if ((lastResult.successCount + lastResult.safeCount == 0) && (lastResult.failureCount > 0))
             {
-                var messages = new (Types.CharacterState, string)[]
-                {
-                    (Types.CharacterState.SUCCESS, $"やったぁ！ {lastResult.maxCombo}コンボ！ 魔法の調子、絶好調！"),
-                    (Types.CharacterState.SUCCESS, "みんな喜んでくれた！ えへへ、嬉しいな"),
-                    (Types.CharacterState.SUCCESS, $"{lastResult.successCount}人ともお友達になれたかな？")
-                };
-                message = messages[Random.Range(0, messages.Length)];
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.WORRY, "うーん…ちょっと遅れただけで、みんな帰っちゃうね…"),
+                    (Types.CharacterState.NORMAL, $"{settings.allowableBeatStartIndex+1}番目の言葉の後に、おもてなしだね"),
+                    (Types.CharacterState.SUCCESS, $"よーし、もう一回！{settings.allowableBeatStartIndex+1}番目の言葉の後に合わせてみよう！")
+                });
             }
-            // 3. 失敗が多い (ライフの半分以上失敗、または成功より失敗が多い)
-            else if (lastResult.failureCount > (settings.life / 2) || lastResult.failureCount > lastResult.successCount)
-            {
-                var messages = new (Types.CharacterState, string)[]
-                {
-                    (Types.CharacterState.WORRY, $"うぅ…{lastResult.failureCount}回も失敗…。嫌われちゃったかも…。"),
-                    (Types.CharacterState.WORRY, "あんまり喜んでもらえなかったかも…"),
-                    (Types.CharacterState.SHOCK, "ごめんなさい…。次はもっと上手に作るから…！")
-                };
-                message = messages[Random.Range(0, messages.Length)];
-            }
-            // 4. 好成績 (成功が失敗より多い)
-            else if (lastResult.successCount > lastResult.failureCount)
-            {
-                var messages = new (Types.CharacterState, string)[]
-                {
-                    (Types.CharacterState.RELIEF, "たくさんのお菓子、喜んでもらえたかな？"),
-                    (Types.CharacterState.SUCCESS, $"最大{lastResult.maxCombo}コンボ！ この調子でいこー！"),
-                    (Types.CharacterState.NORMAL, $"次は、{lastResult.failureCount}回の失敗、取り戻すぞっ！")
-                };
-                message = messages[Random.Range(0, messages.Length)];
-            }
-            // 5. その他 (平均的)
             else
             {
-                var messages = new (Types.CharacterState, string)[]
-                {
-                    (Types.CharacterState.NORMAL, $"{lastResult.totalAlians}人かぁ。もっといっぱい配りたいな♪"),
-                    (Types.CharacterState.NORMAL, "成功も失敗もあったけど…ハロウィンは楽しいね！"),
-                    (Types.CharacterState.WORRY, $"次は、{lastResult.maxCombo}コンボ以上目指してみようかな？")
-                };
-                message = messages[Random.Range(0, messages.Length)];
+                message = SelectMessage(new[]{
+                    (Types.CharacterState.RELIEF, $"次は何人に出会えるかな？"),
+                    (Types.CharacterState.RELIEF, "成功も失敗もあったけど、ハロウィンは楽しいね"),
+                    (Types.CharacterState.NORMAL, $"次は何を目指してみようかな")
+                });
             }
-
             state = message.State;
             text = message.Text;
         }

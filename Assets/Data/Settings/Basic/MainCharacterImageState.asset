@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16947661dd7624a35bc00e9fd702b2d8, type: 3}
   m_Name: MainCharacterImageState
   m_EditorClassIdentifier: Assembly-CSharp::Halloween.Settings.MainCharacterImageState
+  _readyVoice: {fileID: 8300000, guid: d4a4107b653d943ff8db619c59edac9f, type: 3}
   _normalImage: {fileID: 21300000, guid: 027d7a6e19cee401db22375d4ddc2632, type: 3}
   _successImage: {fileID: 21300000, guid: 9887f26bf1cc84d4680780708bb1fcae, type: 3}
+  _successVoice: {fileID: 8300000, guid: 8621cc906595e4acf8b95b3a8fcd23a8, type: 3}
   _shockImage: {fileID: 21300000, guid: a93573bef1a6542f086c2a83cfd9410d, type: 3}
+  _shockVoice: {fileID: 8300000, guid: c451e7763c55a4862b22ed89957f1044, type: 3}
   _worryImage: {fileID: 21300000, guid: cf6d9feb8b7ba48219f37291da125ade, type: 3}
+  _worryVoice: {fileID: 8300000, guid: 3bbc650445fcc45d3b4421887a4d1ff9, type: 3}
   _reliefImage: {fileID: 21300000, guid: c85e9c9e3eee74040ae33106fe0d0676, type: 3}
+  _reliefVoice: {fileID: 8300000, guid: 89636f3c960c94b8db809ef9a1b99440, type: 3}

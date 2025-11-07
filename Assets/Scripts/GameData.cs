@@ -91,8 +91,8 @@ namespace Halloween
             if (_results != null && _results.Count > 1)
             {
                 return (
-                    (_results.Count - 1 == _bestMaxComboIndex) ? GameDataEvaluate.MAXCOMBO : GameDataEvaluate.NONE |
-                    ((_results.Count-1 == _bestSuccessIndex) ? GameDataEvaluate.MAXSUCCESS : GameDataEvaluate.NONE)
+                    (((_results.Count - 1) == _bestMaxComboIndex) ? GameDataEvaluate.MAXCOMBO : GameDataEvaluate.NONE) |
+                    (((_results.Count - 1) == _bestUnmissesIndex) ? GameDataEvaluate.MAXSUCCESS : GameDataEvaluate.NONE)
                 );
             }
             return GameDataEvaluate.NONE;

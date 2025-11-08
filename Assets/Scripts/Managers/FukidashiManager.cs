@@ -12,11 +12,9 @@ namespace Halloween.Managers
         private TextMeshProUGUI _first;
         [SerializeField]
         private TextMeshProUGUI _third;
+        private bool _hasDeath;
 
-        /// <summary>
-        /// "Trick" (0), "Treat" (1), "Death" (2)
-        /// </summary>
-        public static readonly string[] labels = { "Trick", "Treat", "Death" };
+        private string[] labels => GameSceneManager.labels;
 
         protected override void Start()
         {
@@ -33,6 +31,7 @@ namespace Halloween.Managers
         {
             _first.text = GetRandomLabel(gameDifficulty);
             _third.text = GetRandomLabel(gameDifficulty);
+            _hasDeath = CheckAny(labels[2]);
         }
 
         /// <summary>
@@ -40,7 +39,15 @@ namespace Halloween.Managers
         /// </summary>
         /// <param name="trigger">トリガーが引かれたか</param>
         /// <returns>判定結果</returns>
-        public Types.ResultType GetResult(bool trigger)
+        public Types.TreatResult GetResult(bool trigger)
+        {
+            return new()
+            {
+                hasDeath = _hasDeath,
+                resultType = GetResultType(trigger)
+            };
+        }
+        private Types.ResultType GetResultType(bool trigger)
         {
             if (CheckAny(labels[1]))
             {
@@ -92,7 +99,7 @@ namespace Halloween.Managers
         /// </summary>
         /// <param name="label">確認するラベル</param>
         /// <returns>含まれる場合は true</returns>
-        public bool CheckAny(string label)
+        private bool CheckAny(string label)
         {
             return _first.text == label || _third.text == label;
         }

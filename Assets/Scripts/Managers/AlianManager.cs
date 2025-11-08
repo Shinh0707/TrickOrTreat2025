@@ -59,12 +59,12 @@ namespace Halloween.Managers
             }
         }
 
-        public void Play(Types.ResultType result, bool hasDeath)
+        public void Play(Types.TreatResult result)
         {
-            switch (result)
+            switch (result.resultType)
             {
                 case Types.ResultType.SUCCESS:
-                    SetSprite(hasDeath ? Types.AlianType.MONSTER : Types.AlianType.KID);
+                    SetSprite(result.hasDeath ? Types.AlianType.MONSTER : Types.AlianType.KID);
                     PlayClip($"30");
                     break;
                 case Types.ResultType.FAIL:

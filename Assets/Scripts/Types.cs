@@ -10,6 +10,11 @@ namespace Halloween
             FAIL = 3,
             DEATH = 4
         }
+        public struct TreatResult
+        {
+            public ResultType resultType;
+            public bool hasDeath;
+        }
         public enum AlianType
         {
             KID, MONSTER, NONE

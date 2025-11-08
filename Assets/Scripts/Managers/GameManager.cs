@@ -12,6 +12,7 @@ namespace Halloween.Managers
         [SerializeField] ComboManager _comboManager;
         [SerializeField] LifeManager _lifeManager;
         [SerializeField] AnnotationManager _annotationManager;
+        [SerializeField] PhaseProgressBarManager _phaseProgressManager;
         [SerializeField] GameAudioManager _gameAudioManager;
         [SerializeField] AudioClip _endAudio;
         Settings.GameSettings _setting;
@@ -27,16 +28,15 @@ namespace Halloween.Managers
             _trigger = false;
             _reset = false;
             _gameoverAnimationIsRunning = false;
-            _fukidashiManager.SetUp(_gameState.CurrentDifficulty);
-            if (_gameState.Speed != 1.0f)
-            {
-                _gameState.Speed = 1.0f;
-                _characterManager.SetDuration(_gameState.BeatDuration);
-                _fukidashiManager.SetDuration(_gameState.BeatDuration);
-                _alianManager.SetDuration(_gameState.BeatDuration);
-            }
-            _lifeManager.SetLife(_gameState.Life);
+            _gameState.Speed = 1.0f;
             _gameState.ResetBeat();
+            _fukidashiManager.SetUp(_gameState.CurrentDifficulty);
+            _characterManager.SetDuration(_gameState.BeatDuration);
+            _fukidashiManager.SetDuration(_gameState.BeatDuration);
+            _alianManager.SetDuration(_gameState.BeatDuration);
+            _lifeManager.SetLife(_gameState.Life);
+            _phaseProgressManager.ManualStart();
+            _phaseProgressManager.Setup(_gameState.CurrentDifficultyIndex, _gameState.CurrentDifficulty.phaseAlians-1);
         }
 
         void Restart(float speedMultiplier = 1.0f, bool restartBGM = false)
@@ -48,7 +48,7 @@ namespace Halloween.Managers
             _fukidashiManager.SetUp(_gameState.CurrentDifficulty);
             if (_gameState.Speed != speedMultiplier)
             {
-                //Debug.Log($"Set Speed => {_gameState.Speed} => {speedMultiplier}");
+                //Debug.Log($"Set Speed => {_gameState.Speed} => {speedMultiplier} / {_gameState.BeatDuration}");
                 _gameState.Speed = speedMultiplier;
                 _characterManager.SetDuration(_gameState.BeatDuration);
                 _fukidashiManager.SetDuration(_gameState.BeatDuration);
@@ -56,7 +56,7 @@ namespace Halloween.Managers
             }
             if (restartBGM || !_gameAudioManager.isPlaying())
             {
-                _gameAudioManager.StartCrossfadeAudio(_gameState.CurrentDifficulty.bgm, _gameState.BeatDuration);
+                _gameAudioManager.StartCrossfadeAudio(_gameState.CurrentDifficulty.bgm, _gameState.BeatDuration / 1.5f);
             }
             _gameState.ResetBeat();
         }
@@ -66,7 +66,11 @@ namespace Halloween.Managers
             //Debug.Log($"Beat: {index} / Reset: {_reset}");
             if (index == 0)
             {
-                if (_reset) _annotationManager.Play();
+                if (_reset)
+                {
+                    _phaseProgressManager.Setup(_gameState.CurrentDifficultyIndex, _gameState.CurrentDifficulty.phaseAlians-1);
+                    _annotationManager.Play();
+                }
                 Restart(_gameState.CurrentDifficulty.phaseSpeed, _reset);
             }
             _comboManager.SetCombo(_gameState.Combo);
@@ -74,10 +78,18 @@ namespace Halloween.Managers
             _fukidashiManager.Play(index);
             if (index == _setting.beats - 1)
             {
-                Types.ResultType result = _fukidashiManager.GetResult(_trigger);
+                var result = _fukidashiManager.GetResult(_trigger);
                 _reset = _gameState.AlianFinished(result);
-                _characterManager.Play(result);
-                _alianManager.Play(result, _fukidashiManager.CheckAny(FukidashiManager.labels[2]));
+                _characterManager.Play(result.resultType);
+                _alianManager.Play(result);
+                //Debug.Log($"PI: {_gameState.CurrentPhaseIndex}/{_gameState.CurrentDifficulty.phaseAlians}");
+                if (_gameState.CurrentPhaseIndex == 0) {
+                    _phaseProgressManager.EndProgress(result);
+                }
+                else
+                {
+                    _phaseProgressManager.InProgress(_gameState.CurrentPhaseIndex - 1, result);
+                }
             }
             else
             {

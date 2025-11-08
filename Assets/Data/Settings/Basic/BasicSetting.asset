@@ -50,7 +50,7 @@ MonoBehaviour:
     m_Reference: {fileID: 8796597484995978561, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   mainKey: 32
   preDelay: 3
-  bpm: 60
+  bpm: 61
   beats: 4
   allowableBeatStartIndex: 2
   allowableBeatEndIndex: 3

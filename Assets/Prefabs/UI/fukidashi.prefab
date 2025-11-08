@@ -653,8 +653,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Halloween
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e3b1d918d17f14c33abaeb2da807725e, type: 2}
-  m_sharedMaterial: {fileID: 4252207224455804682, guid: e3b1d918d17f14c33abaeb2da807725e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4d20303dd4074187b0813527dffcfac, type: 2}
+  m_sharedMaterial: {fileID: -5763492498911279741, guid: c4d20303dd4074187b0813527dffcfac, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

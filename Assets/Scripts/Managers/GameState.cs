@@ -1,3 +1,4 @@
+using Halloween.Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -65,10 +66,12 @@ namespace Halloween
         }
         Settings.GameSettings _setting;
         public bool FinishedAll => _currentDifficultyIndex >= _setting.gameDifficulties.Length;
+        public int CurrentDifficultyIndex => _currentDifficultyIndex;
+        public int CurrentPhaseIndex => _localFinishedAlians;
         public Settings.GameDifficultySettings CurrentDifficulty => FinishedAll ? _setting.endlessDifficulties :_setting.gameDifficulties[_currentDifficultyIndex];
         public GameState(Settings.GameSettings setting)
         {
-            _gameResult = new();
+            _gameResult = GameResult.Create();
             _state = Types.State.READY;
             _setting = setting;
             _currentDifficultyIndex = 0;
@@ -81,9 +84,29 @@ namespace Halloween
             _speed = 1.0f;
             _beatDuration = 60f / _setting.bpm;
         }
-        public bool AlianFinished(Types.ResultType resultType)
+        public bool AlianFinished(Types.TreatResult result)
         {
             if (Gameover) return false;
+            if ((!_gameResult.encountedDeath) && result.hasDeath)
+            {
+                _gameResult.encountedDeath = true;
+            }
+            ApplyResultType(result.resultType);
+            _localFinishedAlians++;
+            if (CurrentDifficulty.phaseAlians <= _localFinishedAlians)
+            {
+                if (_currentDifficultyIndex < _setting.gameDifficulties.Length - 1)
+                {
+                    _currentDifficultyIndex++;
+                }
+                _localFinishedAlians = 0;
+                return true;
+            }
+            return false;
+        }
+
+        private void ApplyResultType(Types.ResultType resultType)
+        {
             switch (resultType)
             {
                 case Types.ResultType.SUCCESS:
@@ -102,7 +125,6 @@ namespace Halloween
                     _gameResult.treatedDeath = true;
                     break;
             }
-            _localFinishedAlians++;
             if ((resultType == Types.ResultType.SAFE) || (resultType == Types.ResultType.SUCCESS))
             {
                 _combo++;
@@ -120,16 +142,6 @@ namespace Halloween
                 _combo = 0;
                 ReduceLife(resultType == Types.ResultType.DEATH ? _currentLife : 1);
             }
-            if (CurrentDifficulty.phaseAlians <= _localFinishedAlians)
-            {
-                if (_currentDifficultyIndex < _setting.gameDifficulties.Length - 1)
-                {
-                    _currentDifficultyIndex++;
-                }
-                _localFinishedAlians = 0;
-                return true;
-            }
-            return false;
         }
 
         void ReduceLife(int value)

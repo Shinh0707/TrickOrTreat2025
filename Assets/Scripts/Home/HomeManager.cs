@@ -9,6 +9,7 @@ namespace Halloween.Managers
     {
         [SerializeField] GameObject _mainUI;
         [SerializeField] RectTransform[] _panels;
+        [SerializeField] RectTransform[] _metDeathPanels;
         [SerializeField] float _fallAcc = 300f;
         [SerializeField] float _raiseAcc = 1200f;
         [SerializeField] GameObject _transitionPanel;
@@ -20,7 +21,7 @@ namespace Halloween.Managers
         [SerializeField] AudioSource _sfx;
         [SerializeField] AudioClip _pageSfx;
         [SerializeField] TextMeshProUGUI _resultTextMesh;
-        Settings.GameSettings _setting;
+        private RectTransform[] activePanel => GameSceneManager.GameData.MetDeath ? _metDeathPanels : _panels;
         int _currentPanel;
         bool _isAnimate;
         bool _keepPressed;
@@ -36,7 +37,6 @@ namespace Halloween.Managers
 
         void Restart()
         {
-            _setting = GameSceneManager.GameSettings;
             _homeCharacterManager.Start();
             _currentPanel = 0;
             _keepPressed = false;
@@ -127,12 +127,12 @@ namespace Halloween.Managers
             {
                 Debug.Log($"Pressed");
                 if (_keepPressed) return;
-                if (_currentPanel < _panels.Length)
+                if (_currentPanel < activePanel.Length)
                 {
                     _sfx.PlayOneShot(_pageSfx);
-                    StartCoroutine(FallPanel(_panels[_currentPanel]));
+                    StartCoroutine(FallPanel(activePanel[_currentPanel]));
                     _currentPanel++;
-                    if (_currentPanel == _panels.Length)
+                    if (_currentPanel == activePanel.Length)
                     {
                         _tipsObject.SetActive(true);
                         _resultTextMesh.text = "";
@@ -159,9 +159,9 @@ namespace Halloween.Managers
                         _tipsManager.SetTips();
                     }
                 }
-                else if (_currentPanel == _panels.Length)
+                else if (_currentPanel == activePanel.Length)
                 {
-                    _currentPanel = _panels.Length + 1;
+                    _currentPanel = activePanel.Length + 1;
                     GameSceneManager.SceneChanged(Types.GameSceneState.GAME);
                     _gameScene.LoadScene();
                     _tipsObject.SetActive(false);
@@ -178,11 +178,10 @@ namespace Halloween.Managers
         void OnSceneChanged(Types.GameSceneState state)
         {
             if (state != Types.GameSceneState.HOME) return;
-            if (_currentPanel != _panels.Length + 1) return;
             Restart();
             StartCoroutine(
                 PlayTransition(_transitionPanel, true,
-                    GameSceneManager.UnloadSceneAsync(_gameScene, RaisePanels(_panels, true))
+                    GameSceneManager.UnloadSceneAsync(_gameScene, RaisePanels(activePanel, true))
                 )
             );
         }

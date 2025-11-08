@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicDifficulty2
   m_EditorClassIdentifier: Assembly-CSharp::Halloween.Settings.GameDifficultySettings
   bgm: {fileID: 8300000, guid: f71247268847246c98c04cf9e715cd61, type: 3}
-  phaseAlians: 8
+  phaseAlians: 4
   phaseSpeed: 1.15
   treatRate: 0.5
   trickRate: 0.4

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2408162691742575463}
   - component: {fileID: 2813230362695201315}
   - component: {fileID: 7693601463207970536}
-  - component: {fileID: 4775628371228449202}
   m_Layer: 0
   m_Name: SharedManager
   m_TagString: MainCamera
@@ -154,8 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Halloween.Managers.GameSceneManager
   _dontDestroyOnLoad: 1
   _globalGameSettings: {fileID: 11400000, guid: c40f8d066a9b6485591c5d9edb2ff895, type: 2}
-  _gameData:
-    results: []
   _currentState: 0
 --- !u!114 &7693601463207970536
 MonoBehaviour:
@@ -172,34 +169,3 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &4775628371228449202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6264454653163506604}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
-  m_SendPointerHoverToParent: 1
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 0}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
-  m_ScrollDeltaPerTick: 6

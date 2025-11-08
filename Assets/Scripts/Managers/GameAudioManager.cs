@@ -25,8 +25,10 @@ namespace Halloween.Managers
                 _audioSources[i].volume = 1.0f;
                 _audioSources[i].pitch = 1.0f;
                 _audioSources[i].panStereo = 0.0f;
+                _audioSources[i].spatialize = false;
                 _audioSources[i].spatialBlend = 0.0f;
                 _audioSources[i].reverbZoneMix = 0.0f;
+                _audioSources[i].velocityUpdateMode = AudioVelocityUpdateMode.Fixed;
             }
         }
 

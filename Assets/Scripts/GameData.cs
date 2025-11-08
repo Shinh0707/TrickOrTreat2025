@@ -17,8 +17,10 @@ namespace Halloween
         private int _bestMaxComboIndex = -1;
         private int _bestSuccessIndex = -1;
         private int _bestUnmissesIndex = -1;
+        private bool _metDeath = false;
         private List<GameResult> _results = new();
         public bool HasResult => _results.Count > 0;
+        public bool MetDeath => _metDeath;
         public void AddResult(GameResult result)
         {
             if (_bestMaxComboIndex == -1)
@@ -44,6 +46,10 @@ namespace Halloween
             else if (_results[_bestUnmissesIndex].totalUnmisses < result.totalUnmisses)
             {
                 _bestUnmissesIndex = _results.Count;
+            }
+            if ((!_metDeath) && result.encountedDeath)
+            {
+                _metDeath = true;
             }
             _results.Add(result);
         }
@@ -108,8 +114,23 @@ namespace Halloween
         public int lateCount;
         public int safeCount;
         public bool treatedDeath;
+        public bool encountedDeath;
         public int totalAlians => successCount + failureCount + lateCount + safeCount;
         public int totalMisses => failureCount + lateCount;
         public int totalUnmisses => successCount + safeCount;
+
+        public static GameResult Create()
+        {
+            return new()
+            {
+                maxCombo= 0,
+                successCount= 0,
+                failureCount= 0,
+                lateCount= 0,
+                safeCount= 0,
+                treatedDeath= false,
+                encountedDeath= false
+            };
+        }
     }
 }

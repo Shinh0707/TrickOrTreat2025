@@ -11,6 +11,10 @@ namespace Halloween.Managers
     /// </summary>
     public class GameSceneManager : Utility.SingletonMonoBehaviour<GameSceneManager>
     {
+        /// <summary>
+        /// "Trick" (0), "Treat" (1), "Death" (2)
+        /// </summary>
+        public static readonly string[] labels = { "Trick", "Treat", "Death" };
         [SerializeField] private GameSettings _globalGameSettings;
         public static GameSettings GameSettings => Instance._globalGameSettings;
         [SerializeField] private GameData _gameData = new();
